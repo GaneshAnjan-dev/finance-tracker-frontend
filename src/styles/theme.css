@@ -1,0 +1,421 @@
+/* Global layout – cinematic dark */
+:root {
+  --bg-main: #0b0b10;
+  --bg-panel: #151521;
+  --bg-panel-soft: #1e1e2f;
+  --accent-gold: #ffd700;
+  --accent-green: #4caf50;
+  --accent-cyan: #00ffe7;
+  --text-primary: #f5f5f5;
+  --text-muted: #a0a0a0;
+  --border-subtle: #28283a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #1e1e2f 0, #050508 45%, #000000 100%);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App container */
+.app-root {
+  min-height: 100vh;
+  background: transparent;
+}
+
+/* Cinematic header like streaming apps */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 3.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.6),
+    transparent
+  );
+  backdrop-filter: blur(16px);
+}
+
+.navbar-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: "Poppins", "Inter", system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.04em;
+  color: var(--accent-gold);
+}
+
+.navbar-title::after {
+  content: "FINANCE STUDIO";
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  color: var(--text-muted);
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Streaming-like nav pills */
+.nav-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 1rem;
+  background: rgba(15, 15, 25, 0.85);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.12s ease,
+    box-shadow 0.18s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(35, 35, 60, 0.95);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55);
+}
+
+.nav-btn.active {
+  border-color: var(--accent-cyan);
+  background: radial-gradient(circle at top, #25254a, #151521);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 18px rgba(0, 255, 231, 0.35);
+}
+
+/* Main content frame */
+.app-main {
+  max-width: 960px;        /* narrower so content is more centered */
+  margin: 0 auto;          /* center horizontally */
+  padding: 2rem 1.5rem 2.5rem;
+}
+
+/* Hero / headline – cinematic feel */
+.motivation-title {
+  font-size: 1.9rem;
+  margin: 0.6rem 0 0.15rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: linear-gradient(90deg, #ffffff, #ffd700, #00ffe7);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.motivation-subtitle {
+  margin: 0 0 1.4rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.dashboard {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 3rem;   /* was 4rem */
+}
+
+/* Generic card (like content rails) */
+.card {
+  background: radial-gradient(circle at top left, #262640, var(--bg-panel));
+  border-radius: 18px;
+  padding: 1.1rem 1.3rem;
+  box-shadow:
+    0 22px 45px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 215, 0, 0.06),
+    transparent 55%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Summary cards strip */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));  /* always 3 equal columns */
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+  justify-items: stretch;
+}
+
+.summary-card {
+  border-radius: 16px;
+  padding: 0.9rem 1rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #181827, #101019);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transform: translateY(0);
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.summary-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 0, 0, 0.3),
+    transparent,
+    rgba(255, 255, 255, 0.06)
+  );
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.summary-card h2 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.summary-amount {
+  font-size: 1.55rem;
+  font-weight: 600;
+  margin: 0.1rem 0;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.9);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Color accents on summary cards */
+.income-card {
+  box-shadow: 0 0 0 1px rgba(76, 175, 80, 0.5);
+}
+
+.expense-card {
+  box-shadow: 0 0 0 1px rgba(255, 140, 0, 0.45);
+}
+
+.savings-card {
+  box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.55);
+}
+
+/* Text helpers */
+.info-text {
+  color: var(--text-muted);
+}
+
+.error-text {
+  color: #ff6b6b;
+  margin-bottom: 0.6rem;
+}
+
+.success-text {
+  color: var(--accent-green);
+  margin-bottom: 0.6rem;
+}
+
+/* Section headings */
+.transactions h1,
+.add-edit h1 {
+  font-size: 1.25rem;
+  margin: 0.7rem 0 0.6rem;
+  font-weight: 600;
+}
+
+/* Transactions “content rail” feel */
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.transactions-table th,
+.transactions-table td {
+  padding: 0.55rem 0.8rem;
+}
+
+.transactions-table thead {
+  background: linear-gradient(to right, #151521, #1e1e30);
+}
+
+.transactions-table th {
+  text-align: left;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+}
+
+.transactions-table tbody tr {
+  background: rgba(10, 10, 20, 0.9);
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.transactions-table tbody tr:nth-child(2n) {
+  background: rgba(15, 15, 30, 0.95);
+}
+
+.transactions-table tbody tr:hover {
+  background: rgba(40, 40, 70, 0.95);
+  transform: translateY(-1px);
+}
+
+.row-income {
+  color: var(--accent-green);
+}
+
+.row-expense {
+  color: #ffb67a;
+}
+
+.type-cell {
+  text-transform: capitalize;
+}
+
+/* Form styling – cinematic panels */
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.24rem;
+}
+
+.form-row label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: var(--text-muted);
+}
+
+.input {
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 0.7rem;
+  background: radial-gradient(circle at top left, #222238, #11111b);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.16s ease;
+}
+
+.input::placeholder {
+  color: #6b6b81;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 1px rgba(0, 255, 231, 0.3), 0 0 14px rgba(0, 255, 231, 0.4);
+  background: radial-gradient(circle at top, #282848, #11111b);
+}
+
+/* Streaming-like primary button */
+.primary-btn {
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(110deg, #ffd700, #ffb347, #00ffe7);
+  color: #050510;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+  align-self: flex-start;
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.75),
+    0 0 22px rgba(255, 215, 0, 0.55);
+  transition:
+    transform 0.12s ease,
+    box-shadow 0.16s ease,
+    filter 0.12s ease;
+}
+
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.85),
+    0 0 28px rgba(255, 215, 0, 0.7);
+  filter: brightness(1.05);
+}
+
+.primary-btn:disabled {
+  opacity: 0.7;
+  cursor: default;
+  box-shadow: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0.7rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .app-main {
+    padding: 1rem 1.1rem 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.7rem 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .app-main {
+    padding: 1rem;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
