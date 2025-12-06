@@ -1,3 +1,41 @@
+# Finance Tracker Frontend
+
+React-based frontend for the Finance Tracker application.  
+Displays income, expenses, and transactions, and allows users to add new entries.  
+Communicates with a custom Java + PostgreSQL backend.
+
+---
+
+## 📦 Tech Stack
+
+- React (Create React App)
+- Modern CSS styling
+- Fetch API for backend communication
+
+---
+
+## ✨ Features
+
+- Dashboard showing:
+  - Total income
+  - Total expenses
+  - Net balance
+- Transactions List:
+  - Clean and organized table view
+  - Income vs Expense visual distinction
+- Add Transaction Form:
+  - Submit new transactions to backend API
+- Fully responsive design
+
+---
+
+## 🌐 Backend API (Expected)
+
+The app expects backend server running at:
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
