@@ -4,7 +4,7 @@ function Navbar({ currentPage, onNavigate }) {
   return (
     <header className="navbar">
       <div className="navbar-title">
-        💰 Dark Financial Manifestation
+        💰 BrightBalance
       </div>
       <nav className="navbar-links">
         <button
